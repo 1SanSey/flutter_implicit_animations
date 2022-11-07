@@ -56,7 +56,8 @@ class _ExampleWidgetState extends State<ExampleWidget> {
                 // AnimatedOpacityExample(toggle: toggle),
                 // AnimatedPaddingExample(toggle: toggle),
                 // AnimatedRotationExample(toggle: toggle),
-                AnimatedSwitcherExample(toggle: toggle),
+                // AnimatedSwitcherExample(toggle: toggle),
+                AnimatedSizeExample(toggle: toggle),
               ],
             ),
           ),
@@ -268,6 +269,24 @@ class AnimatedSwitcherExample extends StatelessWidget {
         child: child,
         sizeFactor: animation, 
       ),*/
+    );
+  }
+}
+
+class AnimatedSizeExample extends StatelessWidget {
+  final bool toggle;
+  const AnimatedSizeExample({Key? key, required this.toggle}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedSize(
+      duration: duration,
+      curve: Curves.easeIn,
+      child: Container(
+        width: toggle ? 150 : 50,
+        height: toggle ? 150 : 50,
+        color: Colors.blue,
+      ),
     );
   }
 }
