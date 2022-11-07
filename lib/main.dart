@@ -50,7 +50,8 @@ class _ExampleWidgetState extends State<ExampleWidget> {
                 //AnimatedContainerExample(toggle: toggle),
                 //AnimatedDefaultTextStyleExample(toggle: toggle),
                 //AnimatedAlignExample(toggle: toggle),
-                AnimatedCrossFadeExample(toggle: toggle),
+                // AnimatedCrossFadeExample(toggle: toggle),
+                AnimatedOpacityExample(toggle: toggle),
               ],
             ),
           ),
@@ -63,7 +64,6 @@ class _ExampleWidgetState extends State<ExampleWidget> {
           });
         },
         backgroundColor: Colors.deepOrange,
-        // foregroundColor: Colo,
         child: const Icon(Icons.play_arrow_outlined),
       ),
     );
@@ -173,6 +173,25 @@ class AnimatedCrossFadeExample extends StatelessWidget {
         width: 150,
         height: 150,
         color: Colors.green,
+      ),
+    );
+  }
+}
+
+class AnimatedOpacityExample extends StatelessWidget {
+  final bool toggle;
+  const AnimatedOpacityExample({Key? key, required this.toggle})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedOpacity(
+      duration: duration,
+      opacity: toggle ? 1 : 0.5,
+      child: Container(
+        width: 50,
+        height: 50,
+        color: Colors.red,
       ),
     );
   }
