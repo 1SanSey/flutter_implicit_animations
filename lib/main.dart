@@ -48,7 +48,8 @@ class _ExampleWidgetState extends State<ExampleWidget> {
               children: <Widget>[
                 //ContainerExample(toggle: toggle),
                 //AnimatedContainerExample(toggle: toggle),
-                AnimatedDefaultTextStyleExample(toggle: toggle),
+                //AnimatedDefaultTextStyleExample(toggle: toggle),
+                AnimatedAlignExample(toggle: toggle),
               ],
             ),
           ),
@@ -123,6 +124,27 @@ class AnimatedDefaultTextStyleExample extends StatelessWidget {
         duration: duration,
         style: toggle ? styleOne : styleTwo,
         child: const Text('Hello, Flutter'),
+      ),
+    );
+  }
+}
+
+class AnimatedAlignExample extends StatelessWidget {
+  const AnimatedAlignExample({super.key, required this.toggle});
+  final bool toggle;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 100,
+      child: AnimatedAlign(
+        alignment: toggle ? Alignment.bottomLeft : Alignment.topRight,
+        duration: duration,
+        child: Container(
+          color: Colors.deepOrange,
+          width: 50,
+          height: 50,
+        ),
       ),
     );
   }
