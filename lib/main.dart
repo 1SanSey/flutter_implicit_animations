@@ -6,7 +6,7 @@ void main() {
   runApp(const MyApp());
 }
 
-const duration = Duration(milliseconds: 250);
+const duration = Duration(milliseconds: 1250);
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -55,7 +55,8 @@ class _ExampleWidgetState extends State<ExampleWidget> {
                 // AnimatedCrossFadeExample(toggle: toggle),
                 // AnimatedOpacityExample(toggle: toggle),
                 // AnimatedPaddingExample(toggle: toggle),
-                AnimatedRotationExample(toggle: toggle)
+                // AnimatedRotationExample(toggle: toggle),
+                AnimatedSwitcherExample(toggle: toggle),
               ],
             ),
           ),
@@ -237,6 +238,36 @@ class AnimatedRotationExample extends StatelessWidget {
         height: 50,
         color: Colors.red,
       ),
+    );
+  }
+}
+
+class AnimatedSwitcherExample extends StatelessWidget {
+  final bool toggle;
+  const AnimatedSwitcherExample({Key? key, required this.toggle})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedSwitcher(
+      duration: duration,
+      child: toggle
+          ? Container(
+              key: const ValueKey(0),
+              width: 50,
+              height: 50,
+              color: Colors.red,
+            )
+          : Container(
+              key: const ValueKey(1),
+              width: 150,
+              height: 150,
+              color: Colors.blue,
+            ),
+      /* transitionBuilder: (child, animation) => SizeTransition(
+        child: child,
+        sizeFactor: animation, 
+      ),*/
     );
   }
 }
