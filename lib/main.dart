@@ -45,7 +45,8 @@ class _ExampleWidgetState extends State<ExampleWidget> {
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              ContainerExample(toggle: toggle),
+              //ContainerExample(toggle: toggle),
+              AnimatedContainerExample(toggle: toggle),
             ],
           ),
         ),
@@ -72,13 +73,34 @@ class ContainerExample extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: toggle ? Colors.red : Colors.lightGreen,
+      color: toggle ? Colors.cyan : Colors.lightGreen,
       padding: toggle ? const EdgeInsets.all(40) : const EdgeInsets.all(80),
       width: toggle ? 100 : 400,
       child: Container(
         width: 50,
         height: 50,
-        color: Colors.indigo,
+        color: Colors.deepOrange,
+      ),
+    );
+  }
+}
+
+class AnimatedContainerExample extends StatelessWidget {
+  final bool toggle;
+
+  const AnimatedContainerExample({super.key, required this.toggle});
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedContainer(
+      duration: duration,
+      color: toggle ? Colors.cyan : Colors.lightGreen,
+      padding: toggle ? const EdgeInsets.all(40) : const EdgeInsets.all(80),
+      width: toggle ? 100 : 400,
+      child: Container(
+        width: 50,
+        height: 50,
+        color: Colors.deepOrange,
       ),
     );
   }
