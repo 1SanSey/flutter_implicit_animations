@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -52,7 +54,8 @@ class _ExampleWidgetState extends State<ExampleWidget> {
                 //AnimatedAlignExample(toggle: toggle),
                 // AnimatedCrossFadeExample(toggle: toggle),
                 // AnimatedOpacityExample(toggle: toggle),
-                AnimatedPaddingExample(toggle: toggle),
+                // AnimatedPaddingExample(toggle: toggle),
+                AnimatedRotationExample(toggle: toggle)
               ],
             ),
           ),
@@ -210,6 +213,25 @@ class AnimatedPaddingExample extends StatelessWidget {
     return AnimatedPadding(
       duration: duration,
       padding: toggle ? EdgeInsets.zero : const EdgeInsets.all(50),
+      child: Container(
+        width: 50,
+        height: 50,
+        color: Colors.red,
+      ),
+    );
+  }
+}
+
+class AnimatedRotationExample extends StatelessWidget {
+  final bool toggle;
+  const AnimatedRotationExample({Key? key, required this.toggle})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedRotation(
+      duration: duration,
+      turns: toggle ? pi : pi / 2,
       child: Container(
         width: 50,
         height: 50,
