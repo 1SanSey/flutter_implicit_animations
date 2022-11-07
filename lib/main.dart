@@ -49,7 +49,8 @@ class _ExampleWidgetState extends State<ExampleWidget> {
                 //ContainerExample(toggle: toggle),
                 //AnimatedContainerExample(toggle: toggle),
                 //AnimatedDefaultTextStyleExample(toggle: toggle),
-                AnimatedAlignExample(toggle: toggle),
+                //AnimatedAlignExample(toggle: toggle),
+                AnimatedCrossFadeExample(toggle: toggle),
               ],
             ),
           ),
@@ -145,6 +146,33 @@ class AnimatedAlignExample extends StatelessWidget {
           width: 50,
           height: 50,
         ),
+      ),
+    );
+  }
+}
+
+class AnimatedCrossFadeExample extends StatelessWidget {
+  final bool toggle;
+  const AnimatedCrossFadeExample({
+    Key? key,
+    required this.toggle,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedCrossFade(
+      duration: duration,
+      crossFadeState:
+          toggle ? CrossFadeState.showFirst : CrossFadeState.showSecond,
+      firstChild: Container(
+        width: 50,
+        height: 50,
+        color: Colors.red,
+      ),
+      secondChild: Container(
+        width: 150,
+        height: 150,
+        color: Colors.green,
       ),
     );
   }
