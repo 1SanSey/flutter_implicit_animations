@@ -51,7 +51,8 @@ class _ExampleWidgetState extends State<ExampleWidget> {
                 //AnimatedDefaultTextStyleExample(toggle: toggle),
                 //AnimatedAlignExample(toggle: toggle),
                 // AnimatedCrossFadeExample(toggle: toggle),
-                AnimatedOpacityExample(toggle: toggle),
+                // AnimatedOpacityExample(toggle: toggle),
+                AnimatedPaddingExample(toggle: toggle),
               ],
             ),
           ),
@@ -188,6 +189,27 @@ class AnimatedOpacityExample extends StatelessWidget {
     return AnimatedOpacity(
       duration: duration,
       opacity: toggle ? 1 : 0.5,
+      child: Container(
+        width: 50,
+        height: 50,
+        color: Colors.red,
+      ),
+    );
+  }
+}
+
+class AnimatedPaddingExample extends StatelessWidget {
+  final bool toggle;
+  const AnimatedPaddingExample({
+    Key? key,
+    required this.toggle,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedPadding(
+      duration: duration,
+      padding: toggle ? EdgeInsets.zero : const EdgeInsets.all(50),
       child: Container(
         width: 50,
         height: 50,
