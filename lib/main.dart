@@ -37,17 +37,20 @@ class _ExampleWidgetState extends State<ExampleWidget> {
       appBar: AppBar(
         title: const Text('Implicit Animations'),
       ),
-      body: Center(
-        child: Container(
-          color: Colors.black,
-          padding: const EdgeInsets.all(40),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              //ContainerExample(toggle: toggle),
-              AnimatedContainerExample(toggle: toggle),
-            ],
+      body: SafeArea(
+        child: Center(
+          child: Container(
+            color: Colors.black,
+            padding: const EdgeInsets.all(40),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                //ContainerExample(toggle: toggle),
+                //AnimatedContainerExample(toggle: toggle),
+                AnimatedDefaultTextStyleExample(toggle: toggle),
+              ],
+            ),
           ),
         ),
       ),
@@ -101,6 +104,25 @@ class AnimatedContainerExample extends StatelessWidget {
         width: 50,
         height: 50,
         color: Colors.deepOrange,
+      ),
+    );
+  }
+}
+
+class AnimatedDefaultTextStyleExample extends StatelessWidget {
+  const AnimatedDefaultTextStyleExample({super.key, required this.toggle});
+  final bool toggle;
+  static const styleOne = TextStyle(fontSize: 15, color: Colors.deepOrange);
+  static const styleTwo = TextStyle(fontSize: 30, color: Colors.lightGreen);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.black,
+      child: AnimatedDefaultTextStyle(
+        duration: duration,
+        style: toggle ? styleOne : styleTwo,
+        child: const Text('Hello, Flutter'),
       ),
     );
   }
